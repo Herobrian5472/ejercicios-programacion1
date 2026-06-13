@@ -110,12 +110,12 @@ def limpiar():
 # Funcion que borra solo la ultima frase (linea)
 def borrar_ultima():
     with open(ruta, 'r') as archivo_de_texto:
-        lineas = archivo_de_texto.readlines()
+        lineas = archivo_de_texto.readlines() # creamos la variable donde guardamos las lineas del archivo
 
-    if len(lineas) > 0:
-        lineas.pop() # esto explota si no hay más lineas, usar if len(lineas) > 0:
-        with open(ruta, 'w') as archivo_de_texto:
-            archivo_de_texto.writelines(lineas)
+    if len(lineas) > 0: # verificamos que existan líneas antes de usar pop()
+        lineas.pop() # elimina la ultima linea de la variable lineas
+        with open(ruta, 'w') as archivo_de_texto: # recordar que 'w' sobreescribe, borra lo que habia y escribe lo siguiente:
+            archivo_de_texto.writelines(lineas) # escribe todas las lineas que hay en la variable lineas (menos la ultima que borró)
             print("última frase eliminada.\n")
 
     else:
