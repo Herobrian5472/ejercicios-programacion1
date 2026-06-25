@@ -72,3 +72,72 @@ while indice < cant_elementos:
         archivo_de_texto.write("ventas realizadas: " + str(movimientos) + '\n')
         archivo_de_texto.write("=============================" + '\n')
 
+
+'''
+##################################################
+Usar este ejemplo para corregirlo:
+##################################################
+
+with open("viajes.txt", "r") as archivo:
+
+    linea = archivo.readline().strip()
+
+    mayor_recaudacion = 0
+    empresa_mayor = ""
+    viajes_empresa_mayor = 0
+
+    while linea != "":
+
+        datos = linea.split(",")
+
+        cod_actual = int(datos[0])
+        nom_actual = datos[1]
+
+        total_viajes = 0
+        total_recaudacion = 0
+
+        # Corte de control
+        while linea != "":
+
+            datos = linea.split(",")
+
+            codigo = int(datos[0])
+
+            if codigo != cod_actual:
+                break
+
+            viajes = int(datos[2])
+            recaudacion = float(datos[3])
+
+            total_viajes += viajes
+            total_recaudacion += recaudacion
+
+            linea = archivo.readline().strip()
+
+        print("Empresa:", nom_actual)
+        print("Cantidad de viajes:", total_viajes)
+        print("Recaudación total:", total_recaudacion)
+        print("---------------------------")
+
+        if total_recaudacion > mayor_recaudacion:
+            mayor_recaudacion = total_recaudacion
+            empresa_mayor = nom_actual
+            viajes_empresa_mayor = total_viajes
+
+    print("\nEMPRESA CON MAYOR RECAUDACIÓN DEL MES")
+    print("Empresa:", empresa_mayor)
+    print("Cantidad de viajes:", viajes_empresa_mayor)
+    print("Recaudación:", mayor_recaudacion)
+
+
+
+#####################################################################################################################################################################################
+    El problema con corte.py es que crea listas cuando no son necesarias, la idea es traer la información para mostrarla en la consola sin antes tener que guardarla en memoria
+#####################################################################################################################################################################################
+
+    '''
+
+
+
+
+
